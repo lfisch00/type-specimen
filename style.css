@@ -1,5 +1,42 @@
-* {
-  box-sizing: border-box;
+div {
+	margin: 5rem;
 }
 
-/* Add CSS Styles Below */
+@font-face {
+	font-family: "Market Sans";
+	src: url("MarketSans-Regular-WebS.woff") format("woff"), url("MarketSans-Regular-WebS.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Market Sans Semibold";
+	src: url("MarketSans-SemiBold-WebS.woff") format("woff"), url("MarketSans-SemiBold-WebS.woff2") format("woff2");
+}
+
+
+.main {
+font-family: "Market Sans Semibold", "Helvetica Bold", sans-serif;
+background-color: #680226;
+font-size: 26pt;
+color: #ffdec7;
+padding: 10pt 10pt 10pt 10pt;
+}
+
+.sub {
+font-family: "Market Sans", "Helvetica", sans-serif;
+font-size: 14pt;
+background-color: #680226;
+color: #ffdec7;
+padding: 10pt 10pt 10pt 10pt;
+}
+
+.navi {
+font-family: "Market Sans", "Helvetica", sans-serif;
+font-size: 9pt;
+color: grey;
+}
+
+.foot {
+font-family: "Helvetica", "Arial", sans-serif;
+font-size: 9pt;
+color: grey;
+}
