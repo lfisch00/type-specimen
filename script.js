@@ -1,52 +1,32 @@
-// Add click event
-document.getElementById('copy-text1').addEventListener('click', function(e){
-  e.preventDefault();
-  
-  // Select the text
-  document.getElementById('text-to-copy1').select();
-  
-  var copied;
-  
-  try
-  {
-      // Copy the text
-      copied = document.execCommand('copy');
-  } 
-  catch (ex)
-  {
-      copied = false;  
-  }
-  
-  if(copied)
-  {
-    // Display the copied text message
-    document.getElementById('copied-text1').style.display = 'block';    
-  }
-  
-});
+const aioColors = document.querySelectorAll('.colorfield span');
 
-document.getElementById('copy-text2').addEventListener('click', function(e){
-  e.preventDefault();
-  
-  // Select the text
-  document.getElementById('text-to-copy2').select();
-  
-  var copied;
-  
-  try
-  {
-      // Copy the text
-      copied = document.execCommand('copy');
-  } 
-  catch (ex)
-  {
-      copied = false;  
-  }
-  
-  if(copied)
-  {
-    // Display the copied text message
-    document.getElementById('copied-text2').style.display = 'block';    
-  }
-  
+aioColors.forEach(color => {
+  color.addEventListener('click', () => {
+    const selection = window.getSelection();
+    const range = document.createRange();
+    range.selectNodeContents(color);
+    selection.removeAllRanges();
+    selection.addRange(range);
+
+    try {
+      document.execCommand('copy');
+      selection.removeAllRanges();
+
+      const original = color.textContent;
+      color.textContent = 'Copied!';
+      color.classList.add('success');
+
+      setTimeout(() => {
+        color.textContent = original;
+        color.classList.remove('success');
+      }, 1200);
+    } catch(e) {
+      const errorMsg = document.querySelector('.error-msg');
+      errorMsg.classList.add('show');
+
+      setTimeout(() => {
+        errorMsg.classList.remove('show');
+      }, 1200);
+    }
+  });
 });
